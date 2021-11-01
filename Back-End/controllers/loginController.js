@@ -1,4 +1,4 @@
-const {} = require('../api/auth/tokenJWT');
+const { jwtLogin } = require('../api/auth/tokenJWT');
 const {} = require('../services/loginValid/');
 
 const login = async (req, res) => {
