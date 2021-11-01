@@ -1,3 +1,5 @@
+const taskRouter = require('./taskRouter');
 
-
-module.exports = {};
+module.exports = {
+  taskRouter
+};

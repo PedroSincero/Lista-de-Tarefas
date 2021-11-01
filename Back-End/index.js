@@ -1,5 +1,5 @@
 const express = require('express');
-const {} = require('./routes/index');
+const { taskRouter } = require('./routes/index');
 
 const app = express();
 
@@ -11,5 +11,6 @@ app.get('/', (req, res) => {
   res.send('Hello World');
 })
 
+app.use('/task', taskRouter)
 
 app.listen(PORT, () => console.log(`Conectado na Porta ${PORT}`));
