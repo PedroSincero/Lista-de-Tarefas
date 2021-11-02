@@ -9,7 +9,7 @@ Antes de começar a seguir os passo-a-passo, este projeto está armazenado em um
 - Tutorial para a instalação(Windows): https://www.youtube.com/watch?v=SOxafinthys
 - Tutorial para a Instalação(Linux-Ubuntu): https://www.youtube.com/watch?v=DAFHoOA-Rao
 - 
-## Tecnologias Utilizadas
+## Ferramentas Utilizadas
 - Node.js
 - MongoDB
 - Express
