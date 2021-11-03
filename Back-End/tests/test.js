@@ -98,6 +98,30 @@ describe('1 - Endpoint de Cadastro de usuários "/users"', () => {
         expect(result.message).toBe('"email" must be a valid email')
       })
   })
+  it('Verificando se o campo "email" já está registrado no banco', async () => {
+    await frisby
+      .post(`${URL}/users`, 
+      {
+        name: 'Pedrinho',
+        email: 'pedrinho@gmail.com',
+        password: '123456789'
+      })
+      .expect('status', 201);
+
+    await frisby
+      .post(`${URL}/users`, 
+      {
+        name: 'Pedrinho',
+        email: 'pedrinho@gmail.com',
+        password: '123456789'
+      })
+      .expect('status', 409)
+      .then((res) => {
+        const { body } = res;
+        const result = JSON.parse(body);
+        expect(result.message).toBe('Email already registered');
+      });
+  });
 
   it('Verificando se o cadastro do usuário foi um sucesso', async () => {
     await frisby
