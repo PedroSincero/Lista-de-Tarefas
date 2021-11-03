@@ -5,7 +5,7 @@ require('dotenv').config();
 const { DB_NAME } = process.env;
 const URL = 'http://localhost:3000';
 
-describe('1 - Endpoint de Cadastro de usuários "/users"', () => {
+describe('1 - Validando Metodo POST da Rota "/users"  ', () => {
   let connection;
   let db;
 
@@ -29,7 +29,7 @@ describe('1 - Endpoint de Cadastro de usuários "/users"', () => {
     await connection.close();
   })
 
-  it('Verificar se houve conexão com a API ', async () => {
+  it('Será Validado se houve conexão com a API ', async () => {
     await frisby
       .get(`${URL}`)
       .then((res) => {
@@ -38,7 +38,7 @@ describe('1 - Endpoint de Cadastro de usuários "/users"', () => {
       });
   });
 
-  it('Verificando se o campo "name" é obrigatório e se contem as mensagens corretas', async () => {
+  it('Será Validado se o campo "name" é obrigatório', async () => {
     await frisby
     .post(`${URL}/users/`,
     {
@@ -53,7 +53,7 @@ describe('1 - Endpoint de Cadastro de usuários "/users"', () => {
     })
   });
 
-  it('Verificando se o campo "email" é obrigatório e se contem as mensagens corretas', async () => {
+  it('Será Validado se o campo "email" é obrigatório ', async () => {
     await frisby
     .post(`${URL}/users/`,
     {
@@ -68,7 +68,7 @@ describe('1 - Endpoint de Cadastro de usuários "/users"', () => {
     })
   });
 
-  it('Verificando se o campo "password" é obrigatório e se contem as mensagens corretas', async () => {
+  it('Será Validado se o campo "password" é obrigatório ', async () => {
     await frisby
     .post(`${URL}/users/`,
     {
@@ -83,7 +83,7 @@ describe('1 - Endpoint de Cadastro de usuários "/users"', () => {
     })
   });
 
-  it('Verificando se o campo "email" é inválido', async () => {
+  it('Será Validado se o campo "email" é inválido', async () => {
     await frisby
       .post(`${URL}/users`,
       {
@@ -98,7 +98,7 @@ describe('1 - Endpoint de Cadastro de usuários "/users"', () => {
         expect(result.message).toBe('"email" must be a valid email')
       })
   })
-  it('Verificando se o campo "email" já está registrado no banco', async () => {
+  it('Será Validado se o campo "email" está registrado no banco de dados', async () => {
     await frisby
       .post(`${URL}/users`, 
       {
@@ -123,7 +123,7 @@ describe('1 - Endpoint de Cadastro de usuários "/users"', () => {
       });
   });
 
-  it('Verificando se o cadastro do usuário foi um sucesso', async () => {
+  it('Será Validado se o cadastro do usuário foi bem sucedido', async () => {
     await frisby
       .post(`${URL}/users`,
       {
