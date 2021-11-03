@@ -41,7 +41,7 @@ Antes de começar a seguir os passo-a-passo, este projeto está armazenado em um
 - [x]  Será Verificado se o campo "email" já está registrado no banco 
 - [x]  Será Verificado se o cadastro do usuário foi um sucesso 
 
-## 2 - Crie um endpoint para o login de tarefas
+## 2 - Crie um endpoint para o login de Usuários
 
 ## 3 - Crie um endpoint para o cadastro de tarefas
 
