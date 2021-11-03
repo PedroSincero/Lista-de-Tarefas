@@ -29,7 +29,16 @@ describe('1 - Crie um endpoint para o cadastro de usuários', () => {
     await connection.close();
   })
 
-  it('Verificando se o campo "name" é obrigatório', async () => {
+  it('Verificar se houve conexão com a API ', async () => {
+    await frisby
+      .get(`${URL}`)
+      .then((res) => {
+        const { body } = res;
+        expect(body).toBe('Hello World');
+      });
+  });
+
+  it('Verificando se o campo "name" é obrigatório e se contem as mensagens corretas', async () => {
     await frisby
     .post(`${URL}/users/`,
     {
@@ -42,14 +51,51 @@ describe('1 - Crie um endpoint para o cadastro de usuários', () => {
       const result = JSON.parse(body);
       expect(result.message).toBe('"name" is required')
     })
-  })
+  });
 
-  it('Verificar se houve conexão com a API ', async () => {
+  it('Verificando se o campo "email" é obrigatório e se contem as mensagens corretas', async () => {
     await frisby
-      .get(`${URL}`)
+    .post(`${URL}/users/`,
+    {
+      name: 'pedrinho',
+      password: '123456879'
+    })
+    .expect('status', 400)
+    .then((res) => {
+      const { body } = res;
+      const result = JSON.parse(body);
+      expect(result.message).toBe('"email" is required')
+    })
+  });
+
+  it('Verificando se o campo "password" é obrigatório e se contem as mensagens corretas', async () => {
+    await frisby
+    .post(`${URL}/users/`,
+    {
+      name: 'pedrinho',
+      email: 'pedrinho@gmail.com',
+    })
+    .expect('status', 400)
+    .then((res) => {
+      const { body } = res;
+      const result = JSON.parse(body);
+      expect(result.message).toBe('"password" is required')
+    })
+  });
+
+  it('Verificando se o campo "email" é inválido', async () => {
+    await frisby
+      .post(`${URL}/users`,
+      {
+        name: 'Pedrinho',
+        email: 'pedrinho.com',
+        password: '123456789'
+      })
+      .expect('status', 400)
       .then((res) => {
         const { body } = res;
-        expect(body).toBe('Hello World');
-      });
+        const result = JSON.parse(body);
+        expect(result.message).toBe('"email" must be a valid email')
+      })
   })
 });
