@@ -5,7 +5,7 @@ require('dotenv').config();
 const { DB_NAME } = process.env;
 const URL = 'http://localhost:3000';
 
-describe('1 - Crie um endpoint para o cadastro de usuários', () => {
+describe('1 - Endpoint de Cadastro de usuários "/users"', () => {
   let connection;
   let db;
 
@@ -96,6 +96,22 @@ describe('1 - Crie um endpoint para o cadastro de usuários', () => {
         const { body } = res;
         const result = JSON.parse(body);
         expect(result.message).toBe('"email" must be a valid email')
+      })
+  })
+
+  it('Verificando se o cadastro do usuário foi um sucesso', async () => {
+    await frisby
+      .post(`${URL}/users`,
+      {
+        name: 'Pedrinho',
+        email: 'pedrinho@gmail.com',
+        password: '123456789'
+      })
+      .expect('status', 201)
+      .then((res) => {
+        const { body } = res;
+        const result = JSON.parse(body);
+        expect(result).toHaveProperty('userID');
       })
   })
 });

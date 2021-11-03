@@ -8,7 +8,6 @@ const validUser = rescue(async(req, _res, next) => {
   password: Joi.string().min(6).required(),
 }).validate(req.body);
   if(error) {
-    console.log('entrei aqui');
     return next(error);
   }
   return next();
