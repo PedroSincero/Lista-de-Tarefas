@@ -1,9 +1,11 @@
 const express = require('express');
-// const { taskRouter, loginRouter, userRouter } = require('./routes/index');
+const { userRouter } = require('./routes/index');
+// taskRouter, loginRouter,
 require('dotenv').config();
 const app = express();
+const error = require('./middleware/error');
 
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 
 app.use(express.json());
 
@@ -15,6 +17,7 @@ app.get('/', (req, res) => {
 
 // app.use('/login', loginRouter);
 
-// app.use('/users', userRouter);
+app.use('/users', userRouter);
+app.use(error);
 
 app.listen(PORT, () => console.log(`Conectado na Porta ${PORT}`));

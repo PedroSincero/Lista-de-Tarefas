@@ -29,6 +29,21 @@ describe('1 - Crie um endpoint para o cadastro de usuários', () => {
     await connection.close();
   })
 
+  it('Verificando se o campo "name" é obrigatório', async () => {
+    await frisby
+    .post(`${URL}/users/`,
+    {
+      email: 'pedrinho@gmail.com',
+      password: '123456879'
+    })
+    .expect('status', 400)
+    .then((res) => {
+      const { body } = res;
+      const result = JSON.parse(body);
+      expect(result.message).toBe('"name" is required')
+    })
+  })
+
   it('Verificar se houve conexão com a API ', async () => {
     await frisby
       .get(`${URL}`)

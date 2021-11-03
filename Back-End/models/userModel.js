@@ -1,27 +1,20 @@
 const connection = require('./connections');
 
-const serialize = ({_id, name, email, password}) => {
-  return {
-    _id,
-    name,
-    email,
-    password,
-  }
-}
-
 const add = async (name, email, password) => {
-  const db = connection();
-  const addUser = await db.collection('users')
-  .insertOne({ name, email, password });
-  const result = addUser.ops;
-  return result.map(serialize);
+  const db = await connection();
+  const addUser = await db.collection('users').insertOne({ name, email, password });
+  console.log('oi bobo',addUser);
+  const result = addUser.insertedId;
+  return result;
 };
 
-const find = async () => {
-
+const findByEmail = async (email) => {
+  const db = await connection();
+  const findEmail = await db.collection('users').findOne({ email });
+  return findEmail;
 }
 
 module.exports = {
   add,
-  find
+  findByEmail
 }
