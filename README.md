@@ -30,10 +30,25 @@ Antes de começar a seguir os passo-a-passo, este projeto está armazenado em um
 
 # Requisitos do Desafio
 
-- [ ] 1 - Crie um endpoint para o cadastro de tarefas
-- [ ] 2 - Crie um endpoint para o login de usuários
-- [ ] 3 - Crie um endpoint para o cadastro de tarefas
-- [ ] 4 - Crie um endpoint para a listagem das tarefas
-- [ ] 5 - Crie um endpoint para visualizar uma tarefa especifica
-- [ ] 6 - Crie um endpoint para a edição de uma tarefa
-- [ ] 7 - Crie um endpoint para a exclusão de uma tarefa
+## 1 - Crie um endpoint para o cadastro de usuários
+- [x]  Será Será Verificado  se Houve conexão com a API
+- [x]  Será Verificado se o campo "name" é Obrigatório e se contem as mensagens corretas
+- [x]  Será Verificado se o campo "email" é obrigatório e se contem as mensagens corretas 
+- [x]  Será Verificado se o campo "password" é obrigatório e se contem as mensagens corretas 
+- [x]  Será Verificado se o campo "email" é inválido 
+- [x]  Será Verificado se o campo "email" é inválido 
+- [x]  Será Verificado se o campo "email" é inválido 
+- [x]  Será Verificado se o campo "email" já está registrado no banco 
+- [x]  Será Verificado se o cadastro do usuário foi um sucesso 
+
+## 2 - Crie um endpoint para o login de tarefas
+
+## 3 - Crie um endpoint para o cadastro de tarefas
+
+## 4 - Crie um endpoint para a listagem das tarefas
+
+## 5 - Crie um endpoint para visualizar uma tarefa especifica
+
+## 6 - Crie um endpoint para a edição de uma tarefa
+
+## 7 - Crie um endpoint para a exclusão de uma tarefa
