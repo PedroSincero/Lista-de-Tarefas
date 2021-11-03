@@ -135,7 +135,7 @@ describe('1 - Endpoint de Cadastro de usuários "/users"', () => {
       .then((res) => {
         const { body } = res;
         const result = JSON.parse(body);
-        expect(result).toHaveProperty('userID');
+        expect(result).toHaveProperty('sucess');
       })
   })
 });

@@ -1,5 +1,12 @@
 const connection = require('./connections');
 
+const serialize = ({_id, name}) => {
+  return {
+    _id,
+    name,
+  }
+}
+
 const add = async (name, email, password) => {
   const db = await connection();
   const addUser = await db.collection('users').insertOne({ name, email, password });
@@ -13,7 +20,18 @@ const findByEmail = async (email) => {
   return findEmail;
 }
 
+const findUser = async (email, password) => {
+  const db = await connection();
+  const findOne = await db.collection('users').findOne({ email, password }, {projection: {password: false, email: false}});
+  
+  console.log(findOne);
+  return findOne;
+}
+
 module.exports = {
   add,
-  findByEmail
+  findByEmail,
+  findUser
 }
+
+// Agradecimentos a Lucas Martins - Pelo auxilio na logica da linha 25

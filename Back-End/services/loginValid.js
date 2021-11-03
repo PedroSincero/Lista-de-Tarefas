@@ -1,6 +1,16 @@
 // const Joi = require('joi');
-// const {} = require('../models/loginModel');
+const { login } = require('../models/loginModel');
 
-// module.exports = {
+const isUserExist = async (email, password) => {
+  const result = await login(email, password);
   
-// }
+  if(!result) {
+    return false;
+  }
+  return result;
+}
+
+
+module.exports = {
+  isUserExist
+}

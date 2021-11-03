@@ -1,4 +1,5 @@
 const userModel = require('../models/userModel');
+
 const { emailUnique } = require('../services/userValid');
 
 const add = async (req, res) => {
@@ -12,9 +13,17 @@ const add = async (req, res) => {
       });
   }
   const userID = await userModel.add(name, email, password);
-  return res.status(201).json({ userID });
+  return res.status(201).json({ sucess: userID });
+}
+
+const login = async (req, res) => {
+    const { email, password } = req.body;
+    const findID = await userModel.findUser(email, password);
+    if (!findID) return res.status(404).json({ message: 'Login Invalid, try again'});
+    return res.status(200).json(findID);
 }
 
 module.exports = {
   add,
+  login,
 }
