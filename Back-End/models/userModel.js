@@ -1,12 +1,5 @@
 const connection = require('./connections');
 
-const serialize = ({_id, name}) => {
-  return {
-    _id,
-    name,
-  }
-}
-
 const add = async (name, email, password) => {
   const db = await connection();
   const addUser = await db.collection('users').insertOne({ name, email, password });
