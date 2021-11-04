@@ -1,9 +1,9 @@
 const {ObjectId} = require('mongodb');
 const connection = require('./connections');
 
-const add = async (task) => {
+const add = async (task, status) => {
   const db = await connection();
-  const addTask = await db.collection('tasks').insertOne({task});
+  const addTask = await db.collection('tasks').insertOne({task, status});
   const result = addTask.insertedId;
   return result;
 }
@@ -20,11 +20,11 @@ const findOne = async (id) => {
   return getID;
 }
 
-const edit = async (id, task) => {
+const edit = async (id, task, status) => {
   const db = await connection();
   const update = await db.collection('tasks').findOneAndUpdate({ _id: ObjectId(id)},
   {
-    $set: { task }
+    $set: { task, status }
   },
   {
     returnDocument: 'after'

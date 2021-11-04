@@ -3,9 +3,9 @@ const taskModel = require('../models/taskModel');
 const { validID } = require('../services/taskValid');
 
 const add = async (req, res) => {
-  const { task } = req.body;
+  const { task, status } = req.body;
 
-  const findTask = await taskModel.add(task);
+  const findTask = await taskModel.add(task, status);
   return res.status(201).json({ sucess: findTask });
 }
 
@@ -15,11 +15,11 @@ const findAll = async (req, res) => {
 }
 
 const edit = async (req, res) => {
-  const { id, task } = req.body;
+  const { id, task, status } = req.body;
   const isValidEdit = await validID(id);
   
   if(!isValidEdit) return res.status(400).json({message: 'Invalid ID, try again.'})
-  const result = await taskModel.edit(id, task);
+  const result = await taskModel.edit(id, task, status);
   return res.status(201).json({ sucess: result});
 }
 
