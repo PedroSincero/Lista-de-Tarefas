@@ -14,5 +14,5 @@ const validUser = rescue(async(req, _res, next) => {
 });
 
 module.exports = {
-  validUser
+  validUser,
 };
