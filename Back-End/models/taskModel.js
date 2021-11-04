@@ -1,4 +1,4 @@
-// const {ObjectId} = require('mongodb');
+const {ObjectId} = require('mongodb');
 const connection = require('./connections');
 
 const add = async (task) => {
@@ -14,8 +14,23 @@ const findAll = async () => {
   return getAll;
 }
 
-const edit = async () => {
+const findOne = async (id) => {
+  const db = await connection();
+  const getID = await db.collection('tasks').findOne(ObjectId(id));
+  return getID;
+}
 
+const edit = async (id, task) => {
+  const db = await connection();
+  const update = await db.collection('tasks').findOneAndUpdate({ _id: ObjectId(id)},
+  {
+    $set: { task }
+  },
+  {
+    returnDocument: 'after'
+  });
+
+  return update.value;
 }
 
 const exclude = async () => {
@@ -25,6 +40,7 @@ const exclude = async () => {
 module.exports = {
   add,
   findAll,
+  findOne,
   edit,
   exclude,
 }
