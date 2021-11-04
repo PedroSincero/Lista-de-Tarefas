@@ -1,6 +1,7 @@
 import React from 'react';
 import './styles/App.css';
-import * as sH from './styles/styleHome';
+import * as sH from './styles/Home';
+import { ListItem } from './components/ListItem';
 
 function App() {
   return (
@@ -8,6 +9,8 @@ function App() {
       <sH.Area>
         <sH.Header> Lista de Tarefas </sH.Header>
       </sH.Area>
+      
+      <ListItem />
     </sH.Container>
   );
 }
