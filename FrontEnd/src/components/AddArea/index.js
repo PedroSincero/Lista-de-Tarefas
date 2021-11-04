@@ -1,6 +1,7 @@
 import React from 'react';
 import * as S from './styles';
 import { MdPostAdd } from 'react-icons/md';
+
 export const AddArea = () => {
   return (
     <S.Container>
