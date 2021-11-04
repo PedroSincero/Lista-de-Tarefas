@@ -2,7 +2,7 @@ const taskModel = require('../models/taskModel');
 
 const { ObjectId } = require('mongodb');
 
-const validEdit = async  (id ) => {
+const validID = async  (id) => {
   if (!ObjectId.isValid(id)) return false;
 
   const findOne = await taskModel.findOne(id);
@@ -11,5 +11,5 @@ const validEdit = async  (id ) => {
 };
 
 module.exports = {
-  validEdit
+  validID
 }

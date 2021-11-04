@@ -11,6 +11,17 @@ const validTask = rescue(async(req, _res, next) => {
   return next();
 });
 
+const validEdit = rescue(async(req, _res, next) => {
+  const { task } = req.body;
+  const { error } = Joi.string().required().validate(task);
+
+  if(error) {
+    return next(error);
+  }
+  return next();
+});
+
 module.exports = {
   validTask,
+  validEdit,
 };

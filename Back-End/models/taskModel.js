@@ -33,8 +33,10 @@ const edit = async (id, task) => {
   return update.value;
 }
 
-const exclude = async () => {
-
+const exclude = async (id) => {
+  const db = await connection();
+  const result = await db.collection('tasks').deleteOne({ _id: ObjectId(id) });
+  return result;
 }
 
 module.exports = {

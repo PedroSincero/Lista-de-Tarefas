@@ -113,7 +113,7 @@ describe('4 - Validando Metodo GET da Rota "/tasks"  ', () => {
   
 });
 
-describe.only('5 - Validando Metodo PUT da rota "/tasks"',  () => {
+describe('5 - Validando Metodo PUT da rota "/tasks"',  () => {
   let connection;
   let db;
 
@@ -144,6 +144,49 @@ describe.only('5 - Validando Metodo PUT da rota "/tasks"',  () => {
         const { body } = res;
         expect(body).toBe('Hello World');
       });
+  });
+
+  it('Será Validado se o campo "task" é obrigatório', async () => {
+    await frisby
+    .post(`${URL}/tasks`,
+    {
+
+    })
+    .expect('status', 400)
+    .then((res) => {
+      const { body } = res;
+      const result = JSON.parse(body);
+      expect(result.message).toBe('"task" is required')
+    })
+  });
+
+  it('Será Validado se o campo "task" não é uma string', async () => {
+    let resultString;
+    
+    await frisby
+    .post(`${URL}/tasks`,
+    {
+      task: 'testeTASK'
+    })
+    .expect('status', 201)
+    .then((res) => {
+      const { body } = res;
+      resultString = JSON.parse(body);
+    });
+
+    await frisby
+    .put(`${URL}/tasks`,
+    {
+      id: resultString.sucess,
+      task: 1
+    })
+    .expect('status', 400)
+    .then((res) => {
+      const { body } = res;
+      const result = JSON.parse(body);
+      expect(result.message).toBe('"value" must be a string')
+    })
+
   });
 
   it('Será Validado se o campo "id" é invalido', async () => {
