@@ -42,6 +42,7 @@ Antes de começar a seguir os passo-a-passo, este projeto está armazenado em um
 - [x]  Será Verificado se o cadastro do usuário foi um sucesso 
 
 ## 2 - Crie um endpoint para o login de Usuários
+- [x]  Será Será Verificado  se Houve conexão com a API
 
 ## 3 - Crie um endpoint para o cadastro de tarefas
 

@@ -10,13 +10,10 @@ const add = async (req, res) => {
   return res.status(201).json({ sucess: findTask });
 }
 
-// const findAll = async (req, res) => {
-
-// }
-
-// const findOne = async (req, res) => {
-
-// }
+const findAll = async (req, res) => {
+  const result = await taskModel.findAll();
+  return res.status(200).json({ sucess: result})
+}
 
 // const edit = async (req, res) => {
 
@@ -28,8 +25,7 @@ const add = async (req, res) => {
 
 module.exports = {
   add,
-  // findAll,
-  // findOne,
+  findAll,
   // edit,
   // exclude,
 }

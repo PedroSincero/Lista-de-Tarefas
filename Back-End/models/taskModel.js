@@ -9,11 +9,9 @@ const add = async (task) => {
 }
 
 const findAll = async () => {
-
-}
-
-const findOne = async () => {
-
+  const db = await connection();
+  const getAll = await db.collection('tasks').find().toArray();
+  return getAll;
 }
 
 const edit = async () => {
@@ -27,7 +25,6 @@ const exclude = async () => {
 module.exports = {
   add,
   findAll,
-  findOne,
   edit,
   exclude,
 }
