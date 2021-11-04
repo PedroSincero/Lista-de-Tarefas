@@ -21,4 +21,4 @@ app.use('/login', loginRouter)
 
 app.use(error);
 
-app.listen(PORT, () => console.log(`Conectado na Porta ${PORT}`));
+app.listen(PORT, () => console.log(`Conectado na Porta: ${PORT}`));
