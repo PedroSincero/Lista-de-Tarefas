@@ -146,6 +146,21 @@ describe.only('5 - Validando Metodo PUT da rota "/tasks"',  () => {
       });
   });
 
+  it('Será Validado se o campo "id" é invalido', async () => {
+    await frisby
+    .put(`${URL}/tasks`,
+    {
+      id: '0010001000100',
+      task: 'task suprema'
+    })
+    .expect('status', 400)
+    .then((res) => {
+      const { body } = res;
+      const result = JSON.parse(body);
+      expect(result.message).toBe('Invalid ID, try again.');
+    })
+  })
+
   it('Será Validado se a task foi editada com sucesso', async () => {
     let result;
     
