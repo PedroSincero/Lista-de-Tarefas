@@ -1,6 +1,6 @@
 const express = require('express');
-const { userRouter, loginRouter } = require('./routes/index');
-// taskRouter,
+const { userRouter, loginRouter, taskRouter } = require('./routes/index');
+// ,
 require('dotenv').config();
 const app = express();
 const error = require('./middleware/error');
@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
   res.send('Hello World');
 })
 
-// app.use('/task', taskRouter);
+app.use('/tasks', taskRouter);
 
 app.use('/users', userRouter);
 

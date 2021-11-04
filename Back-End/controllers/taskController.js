@@ -1,10 +1,14 @@
-// const taskModel = require('../models/taskModel');
+const taskModel = require('../models/taskModel');
 
 // const {} = require('../services/taskValid');
 
-// const add = async (req, res) => {
+const add = async (req, res) => {
+  const { task } = req.body;
+  console.log(task);
 
-// }
+  const findTask = await taskModel.add(task);
+  return res.status(201).json({ sucess: findTask });
+}
 
 // const findAll = async (req, res) => {
 
@@ -23,7 +27,7 @@
 // }
 
 module.exports = {
-  // add,
+  add,
   // findAll,
   // findOne,
   // edit,
