@@ -100,7 +100,7 @@ describe('4 - Validando Metodo GET da Rota "/tasks"  ', () => {
       });
   });
 
-  it('Será Validado se a task foi enviada com sucedido', async () => {
+  it('Será Validado se é retornado "sucess" ao requisitar todas as tasks', async () => {
     await frisby
       .get(`${URL}/tasks`)
       .expect('status', 200)
