@@ -38,6 +38,49 @@ describe('2 - Validando Metodo POST da Rota "/login" ', () => {
       });
   });
 
+  it('Será Validado se o campo "email" é obrigatório ', async () => {
+    await frisby
+    .post(`${URL}/login`,
+    {
+      password: 'admin'
+    })
+    .expect('status', 400)
+    .then((res) => {
+      const { body } = res;
+      const result = JSON.parse(body);
+      expect(result.message).toBe('"email" is required')
+    })
+  });
+
+  it('Será Validado se o campo "password" é obrigatório ', async () => {
+    await frisby
+    .post(`${URL}/login`,
+    {
+      email: 'root@gmail.com',
+    })
+    .expect('status', 400)
+    .then((res) => {
+      const { body } = res;
+      const result = JSON.parse(body);
+      expect(result.message).toBe('"password" is required')
+    })
+  });
+
+  it('Será Validado se o login utilizado não está registrado no banco de dados', async () => {
+    await frisby
+    .post(`${URL}/login`,
+    {
+      email: 'spyRoot@gmail.com',
+      password: 'spyAdmin'
+    })
+    .expect('status', 404)
+    .then((res) => {
+      const { body } = res;
+      const result = JSON.parse(body);
+      expect(result.message).toBe('Login Invalid, try again');
+    })
+  })
+
   it('Será Validado se o login foi bem sucedido', async () => {
     await frisby
       .post(`${URL}/login`,
