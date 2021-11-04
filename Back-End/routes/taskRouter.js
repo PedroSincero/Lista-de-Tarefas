@@ -7,7 +7,7 @@ const { validTask } = require('../middleware/taskValidations');
 
 // router.get('/:id', taskController.findOne);
 
-router.post('/',validTask, taskController.add);
+router.post('/', validTask, taskController.add);
 
 // router.put('/:id', taskController.edit);
 
