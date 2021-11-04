@@ -112,3 +112,65 @@ describe('4 - Validando Metodo GET da Rota "/tasks"  ', () => {
   })
   
 });
+
+describe.only('5 - Validando Metodo PUT da rota "/tasks"',  () => {
+  let connection;
+  let db;
+
+  beforeAll(async () => {
+    connection = await MongoClient.connect('mongodb://localhost:27017/Ebytr/', {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    db = connection.db(DB_NAME);
+  });
+
+  beforeEach(async () => {
+    await db.collection('tasks').deleteMany({});
+    const task = {
+      task: 'admin'
+    };
+    await db.collection('tasks').insertOne(task);
+  });
+
+  afterAll(async () => {
+    await connection.close();
+  })
+
+  it('Será Validado se houve conexão com a API ', async () => {
+    await frisby
+      .get(`${URL}`)
+      .then((res) => {
+        const { body } = res;
+        expect(body).toBe('Hello World');
+      });
+  });
+
+  it('Será Validado se a task foi editada com sucesso', async () => {
+    let result;
+    
+    await frisby
+    .post(`${URL}/tasks`,
+    {
+      task: 'testeTASK'
+    })
+    .expect('status', 201)
+    .then((res) => {
+      const { body } = res;
+      result = JSON.parse(body);
+    });
+
+      await frisby
+      .put(`${URL}/tasks`,
+      {
+        id: result.sucess,
+        task: 'task suprema'
+      })
+      .expect('status', 201)
+      .then((res) => {
+        const { body } = res;
+        const result = JSON.parse(body);
+        expect(result).toHaveProperty('sucess');
+      })
+  })
+})
