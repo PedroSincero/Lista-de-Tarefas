@@ -4,13 +4,14 @@ require('dotenv').config();
 
 const { DB_NAME } = process.env;
 const URL = 'http://localhost:3000';
+const MONGO_DB_URL = 'mongodb://localhost:27017/Ebytr/'
 
 describe('2 - Validando Metodo POST da Rota "/login" ', () => {
   let connection;
   let db;
 
   beforeAll(async () => {
-    connection = await MongoClient.connect('mongodb://localhost:27017/Ebytr/', {
+    connection = await MongoClient.connect(MONGO_DB_URL, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
