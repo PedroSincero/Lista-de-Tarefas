@@ -10,6 +10,7 @@ function App() {
 
   useEffect(() => {
     findAll();
+    // sort();
   }, []);
 
   const findAll = () => {
@@ -53,7 +54,6 @@ function App() {
   }
 
   const addTask = (task, status) => {
-    console.log('task: ', task, 'status: ', status);
     api
     .post('/tasks',  { task, status })
     .then(() => findAll())
@@ -62,13 +62,19 @@ function App() {
     });
   }
 
+  const sort = () => {
+    const result = tasks.sucess.sort((a, b) => a.task.localeCompare(b.task));
+    setTasks({sucess: result});
+  }
+
   return (
     <sH.Container>
 
       <sH.Area>
         <sH.Header> Lista de Tarefas </sH.Header>
       <AddArea addTask={ addTask }/>
-      {tasks && tasks.sucess.map(({ _id, task, status }, index) => (
+      <button type="button" onClick={() => sort()}>Ordenar por ordem Alfabetica</button>
+      {tasks &&  tasks.sucess.map(({ _id, task, status }, index) => (
         <ListItem key={index} _id={_id} task={task} status={status} handleUpdate={ handleUpdate } handleDelete={ handleDelete }/>
       ))}
       </sH.Area>
@@ -81,3 +87,4 @@ export default App;
 
 // Agradecimentos Joao Vanelli Turma 10 - Tribo B - Pelo auxilio na construição do Map
 // Agradecimentos a Lucas Martins pela ajuda em resolver o erro no handleDelete
+// Agradecimentos a Este Video >> https://www.youtube.com/watch?v=95sAtAareR8 Pois me auxiliou a dar os primeiros passos no front-end
