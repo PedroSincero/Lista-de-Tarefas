@@ -3,7 +3,8 @@
 Aqui você vai encontrar os detalhes de como visualizar o Desafio e de como ele foi Estruturado 
 
  ### Aviso Importante
-Antes de começar a seguir os passo-a-passo, para que ele com perfeição a sua maquina precisará ter instalado estes programas
+ 
+Para rodar com perfeição voce irá precisar instalar estes programas;
 
 - Tutorial para a Instalação Github(Linux-Ubuntu): https://www.youtube.com/watch?v=DAFHoOA-Rao
 - Tutorial para a instalação MongoDB: https://www.youtube.com/watch?v=yB5EWH5_XmA
