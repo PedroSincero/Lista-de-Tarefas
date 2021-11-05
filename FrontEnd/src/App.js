@@ -4,13 +4,14 @@ import * as sH from './styles/Home';
 import { ListItem } from './components/ListItem';
 import { AddArea } from './components/AddArea';
 import api from './services/api';
+import { GoListOrdered } from 'react-icons/go';
+
 
 function App() {
   const [tasks, setTasks] = useState();
 
   useEffect(() => {
     findAll();
-    // sort();
   }, []);
 
   const findAll = () => {
@@ -73,7 +74,7 @@ function App() {
       <sH.Area>
         <sH.Header> Lista de Tarefas </sH.Header>
       <AddArea addTask={ addTask }/>
-      <button type="button" onClick={() => sort()}>Ordenar por ordem Alfabetica</button>
+      <sH.Button type="button" onClick={() => sort()}><GoListOrdered /></sH.Button>
       {tasks &&  tasks.sucess.map(({ _id, task, status }, index) => (
         <ListItem key={index} _id={_id} task={task} status={status} handleUpdate={ handleUpdate } handleDelete={ handleDelete }/>
       ))}

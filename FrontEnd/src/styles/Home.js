@@ -35,4 +35,10 @@ export const Header = styled.h1`
   font-size: 40px;
 `;
 
+export const Button = styled.button`
+  color: #fff;
+  margin-right: 5px;
+  font-size: 40px;
+  background: transparent;
+`
 // Agradecimentos a https://www.youtube.com/watch?v=R3S8DEzEn6s este video me auxiliou na utilização do styledComponents
