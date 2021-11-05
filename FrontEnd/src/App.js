@@ -52,12 +52,22 @@ function App() {
     });
   }
 
+  const addTask = (task, status) => {
+    console.log('task: ', task, 'status: ', status);
+    api
+    .post('/tasks',  { task, status })
+    .then(() => findAll())
+    .catch((err) => {
+      console.error("ops! ocorreu um erro" + err);
+    });
+  }
+
   return (
     <sH.Container>
 
       <sH.Area>
         <sH.Header> Lista de Tarefas </sH.Header>
-      <AddArea />
+      <AddArea addTask={ addTask }/>
       {tasks && tasks.sucess.map(({ _id, task, status }, index) => (
         <ListItem key={index} _id={_id} task={task} status={status} handleUpdate={ handleUpdate } handleDelete={ handleDelete }/>
       ))}

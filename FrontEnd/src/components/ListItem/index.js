@@ -20,14 +20,10 @@ export const ListItem = ({_id, task, status, handleUpdate, handleDelete }) => {
       setInputEdit(false);
     }
   }
+  
   const editTask = async (value) => {
     return handleUpdate(_id, value, status);
   }
-
-  // const deleteTask = (id) => {
-  //   console.log(id);
-  //   return handleDelete(id)
-  // }
 
   return (
     <>
