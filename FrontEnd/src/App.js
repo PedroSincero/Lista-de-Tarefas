@@ -9,14 +9,18 @@ function App() {
   const [tasks, setTasks] = useState();
 
   useEffect(() => {
-    api
-      .get('/tasks')
-      .then((response) => setTasks(response.data))
-      .catch((err) => {
-        console.error("ops! ocorreu um erro" + err);
-      });
+    findAll();
   }, []);
 
+  const findAll = () => {
+    api
+    .get('/tasks')
+    .then((response) => setTasks(response.data))
+    .catch((err) => {
+      console.error("ops! ocorreu um erro" + err);
+    });
+  }
+  
   const handleUpdate = async (_id, task, status) => {
     await api.put('/tasks',
     {
@@ -39,15 +43,23 @@ function App() {
     });
   }
 
+  const handleDelete =  (id) => {
+    api
+    .delete('/tasks', { data: { id } })
+    .then(() => findAll())
+    .catch((err) => {
+      console.error("ops! ocorreu um erro" + err);
+    });
+  }
+
   return (
     <sH.Container>
 
       <sH.Area>
         <sH.Header> Lista de Tarefas </sH.Header>
       <AddArea />
-      {console.log(tasks)}
       {tasks && tasks.sucess.map(({ _id, task, status }, index) => (
-        <ListItem key={index} _id={_id} task={task} status={status} handleUpdate={ handleUpdate }/>
+        <ListItem key={index} _id={_id} task={task} status={status} handleUpdate={ handleUpdate } handleDelete={ handleDelete }/>
       ))}
       </sH.Area>
 
@@ -58,3 +70,4 @@ function App() {
 export default App;
 
 // Agradecimentos Joao Vanelli Turma 10 - Tribo B - Pelo auxilio na construição do Map
+// Agradecimentos a Lucas Martins pela ajuda em resolver o erro no handleDelete
