@@ -1,14 +1,14 @@
-# Boas vindas ao Desafio Tecnico Ebytr -  Back-End
-
+# Boas vindas ao Desafio Tecnico Ebytr
 
 Aqui você vai encontrar os detalhes de como visualizar o Desafio e de como ele foi Estruturado 
 
  ### Aviso Importante
-Antes de começar a seguir os passo-a-passo, este projeto está armazenado em um repositorio github, então você irá precisar te-lo instalado em sua maquina.
+Antes de começar a seguir os passo-a-passo, para que ele com perfeição a sua maquina precisará ter instalado estes programas
 
-- Tutorial para a instalação(Windows): https://www.youtube.com/watch?v=SOxafinthys
-- Tutorial para a Instalação(Linux-Ubuntu): https://www.youtube.com/watch?v=DAFHoOA-Rao
-- 
+- Tutorial para a Instalação Github(Linux-Ubuntu): https://www.youtube.com/watch?v=DAFHoOA-Rao
+- Tutorial para a instalação MongoDB: https://www.youtube.com/watch?v=yB5EWH5_XmA
+- Tutorial para a instalação Node: https://www.youtube.com/watch?v=LU1TYsyPim0
+
 ## Ferramentas Utilizadas no Back-End
 
 - Node.js
@@ -65,7 +65,12 @@ Caso tenha seguido tudo certinho, seu navegador irá abrir e aparecerá a lista 
 
 
 
-* OBS: Caso apareça alguma mensagem de erro semelhante a imagem abaixo, não se preocupe, está tudo bem. Para resolver este problema, no seu terminal aperte "y"
+## Observações:
+-  Ao acionar o comando `npm install` pode ocorrer bugs semelhantes a imagem abaixo, caso a sua versão do node seja superior a 14.18.1 .
+
+![image](https://user-images.githubusercontent.com/78621614/140446624-18ac6130-df00-4eb0-b8fa-06dc5c5cd469.png)
+
+- Caso apareça alguma mensagem de erro semelhante a imagem abaixo, não se preocupe, está tudo bem. Para resolver este problema, no seu terminal aperte "y"
 
 ![image](https://user-images.githubusercontent.com/78621614/140443132-86afcd5e-1208-4b92-8a7c-022e55076477.png)
 
