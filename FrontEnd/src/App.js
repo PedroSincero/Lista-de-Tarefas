@@ -89,3 +89,4 @@ export default App;
 // Agradecimentos Joao Vanelli Turma 10 - Tribo B - Pelo auxilio na construição do Map
 // Agradecimentos a Lucas Martins pela ajuda em resolver o erro no handleDelete
 // Agradecimentos a Este Video >> https://www.youtube.com/watch?v=95sAtAareR8 Pois me auxiliou a dar os primeiros passos no front-end
+// Agradecimentos a https://stackoverflow.com/questions/6712034/sort-array-by-firstname-alphabetically-in-javascript/51897069 me ajudou a criar o botao de sort
