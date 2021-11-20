@@ -37,7 +37,7 @@ Para rodar com perfeição voce irá precisar instalar estes programas;
 
 1. Clone o repositório git
 
-- `git clone git@github.com:PedroSincero/Desafio_Tecnico-Ebytr.git`.
+- `git clone git@github.com:PedroSincero/Lista-de-Tarefas.git`.
 - Entre na pasta do repositório que você acabou de clonar:
   - `cd Desafio_Tecnico-Ebytr`
   
