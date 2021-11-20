@@ -39,7 +39,7 @@ Para rodar com perfeição voce irá precisar instalar estes programas;
 
 - `git clone git@github.com:PedroSincero/Lista-de-Tarefas.git`.
 - Entre na pasta do repositório que você acabou de clonar:
-  - `cd Desafio_Tecnico-Ebytr`
+  - `cd Lista-de-Tarefas`
   
 2. Instalação das dependências Back-End.
 
