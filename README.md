@@ -1,6 +1,6 @@
 # Boas vindas ao Lista de Tarefas
 
-Aqui você vai encontrar os detalhes de como visualizar o Desafio e de como ele foi Estruturado 
+Aqui você vai encontrar os detalhes de como visualizar a Lista e de como ele foi Estruturado 
 
  ### Aviso Importante
  
